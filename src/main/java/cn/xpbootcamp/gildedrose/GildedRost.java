@@ -26,10 +26,16 @@ public class GildedRost {
                 int clearDays = commodity.sellIn - afterDays;
                 if (clearDays < 10) {
                     if (clearDays < 5) {
-                        price = commodity.quality + 10 + (5 - clearDays)*3;
+                        if (clearDays <= 0) {
+                            price = 0;
+                        } else {
+                            price = commodity.quality + 10 + (5 - clearDays)*3;
+                        }
                     } else {
                         price = commodity.quality + (10 - clearDays)*2;
                     }
+                } else {
+                    price = commodity.quality;
                 }
                 break;
             default:
