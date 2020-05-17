@@ -5,11 +5,18 @@ public class GildedRost {
         int price = 0;
         switch (commodity.rule) {
             case normal:
-                if (afterDays <= 10) {
+                if (afterDays <= commodity.sellIn) {
                     price = (int) Math.round(commodity.quality * Math.pow(0.95, afterDays));
                 } else {
-                    Double tenDaysPrice = commodity.quality * Math.pow(0.95, 10);
-                    price = (int) Math.round(tenDaysPrice * Math.pow(0.9, afterDays - 10));
+                    Double tenDaysPrice = commodity.quality * Math.pow(0.95, commodity.sellIn);
+                    price = (int) Math.round(tenDaysPrice * Math.pow(0.9, afterDays - commodity.sellIn));
+                }
+
+                break;
+            case increment:
+                price = (int) Math.round(commodity.quality * Math.pow(1.01, afterDays));
+                if (price > 50) {
+                    price = 50;
                 }
 
                 break;

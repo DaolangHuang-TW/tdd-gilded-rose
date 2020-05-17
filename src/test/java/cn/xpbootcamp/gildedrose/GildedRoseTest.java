@@ -26,4 +26,15 @@ public class GildedRoseTest {
 
         assertEquals(24, rost.priceChangedBy(commodity, 12));
     }
+
+    @org.junit.jupiter.api.Test
+    void should_return_50_when_after_200_days_given_rule_is_increment_sellIn_is_none_quality_is_40() {
+        Commodity commodity = new Commodity();
+        commodity.name = "Aged Brie";
+        commodity.quality = 40;
+        commodity.sellIn = 0;
+        commodity.rule = PriceChangeRule.increment;
+
+        assertEquals(50, rost.priceChangedBy(commodity, 200));
+    }
 }

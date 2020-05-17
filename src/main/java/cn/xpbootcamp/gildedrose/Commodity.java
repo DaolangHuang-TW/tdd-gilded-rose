@@ -1,8 +1,8 @@
 package cn.xpbootcamp.gildedrose;
 
 public class Commodity {
+    String name;
     int sellIn;
     int quality;
-    String name;
     PriceChangeRule rule;
 }
