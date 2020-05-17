@@ -20,6 +20,8 @@ public class GildedRost {
                 }
 
                 break;
+            case forever:
+                price = commodity.quality;
             default:
                 break;
         }

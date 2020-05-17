@@ -48,4 +48,15 @@ public class GildedRoseTest {
 
         assertEquals(22, rost.priceChangedBy(commodity, 10));
     }
+
+    @org.junit.jupiter.api.Test
+    void should_return_50_when_after_1000_days_given_rule_is_forever_sellIn_is_none_quality_is_50() {
+        Commodity commodity = new Commodity();
+        commodity.name = "Sulfuras";
+        commodity.quality = 50;
+        commodity.sellIn = 0;
+        commodity.rule = PriceChangeRule.forever;
+
+        assertEquals(50, rost.priceChangedBy(commodity, 1000));
+    }
 }
