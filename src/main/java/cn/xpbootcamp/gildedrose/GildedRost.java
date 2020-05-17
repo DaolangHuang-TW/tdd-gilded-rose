@@ -24,16 +24,16 @@ public class GildedRost {
                 price = commodity.quality;
                 break;
             case pass:
-                int clearDays = commodity.sellIn - passedDays;
-                if (clearDays < 10) {
-                    if (clearDays < 5) {
-                        if (clearDays <= 0) {
+                int remainingDays = commodity.sellIn - passedDays;
+                if (remainingDays < 10) {
+                    if (remainingDays < 5) {
+                        if (remainingDays <= 0) {
                             price = 0;
                         } else {
-                            price = commodity.quality + 10 + (5 - clearDays)*3;
+                            price = commodity.quality + 10 + (5 - remainingDays)*3;
                         }
                     } else {
-                        price = commodity.quality + (10 - clearDays)*2;
+                        price = commodity.quality + (10 - remainingDays)*2;
                     }
                 } else {
                     price = commodity.quality;
