@@ -1,20 +1,20 @@
 package cn.xpbootcamp.gildedrose;
 
 public class GildedRost {
-    int priceChangedBy(Commodity commodity, int afterDays) {
+    int priceChangedBy(Commodity commodity, int passedDays) {
         int price = 0;
         switch (commodity.rule) {
             case normal:
-                if (afterDays <= commodity.sellIn) {
-                    price = (int) Math.round(commodity.quality * Math.pow(0.95, afterDays));
+                if (passedDays <= commodity.sellIn) {
+                    price = (int) Math.round(commodity.quality * Math.pow(0.95, passedDays));
                 } else {
                     Double tenDaysPrice = commodity.quality * Math.pow(0.95, commodity.sellIn);
-                    price = (int) Math.round(tenDaysPrice * Math.pow(0.9, afterDays - commodity.sellIn));
+                    price = (int) Math.round(tenDaysPrice * Math.pow(0.9, passedDays - commodity.sellIn));
                 }
 
                 break;
             case increment:
-                price = (int) Math.round(commodity.quality * Math.pow(1.01, afterDays));
+                price = (int) Math.round(commodity.quality * Math.pow(1.01, passedDays));
                 if (price > 50) {
                     price = 50;
                 }
@@ -24,7 +24,7 @@ public class GildedRost {
                 price = commodity.quality;
                 break;
             case pass:
-                int clearDays = commodity.sellIn - afterDays;
+                int clearDays = commodity.sellIn - passedDays;
                 if (clearDays < 10) {
                     if (clearDays < 5) {
                         if (clearDays <= 0) {
