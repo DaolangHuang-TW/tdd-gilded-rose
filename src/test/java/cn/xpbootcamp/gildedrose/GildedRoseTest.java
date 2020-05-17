@@ -70,4 +70,15 @@ public class GildedRoseTest {
 
         assertEquals(28, rost.priceChangedBy(commodity, 24));
     }
+
+    @org.junit.jupiter.api.Test
+    void should_return_39_when_after_28_days_given_rule_is_pass_sellIn_is_30_quality_is_20() {
+        Commodity commodity = new Commodity();
+        commodity.name = "Backstage pass";
+        commodity.quality = 20;
+        commodity.sellIn = 30;
+        commodity.rule = PriceChangeRule.pass;
+
+        assertEquals(39, rost.priceChangedBy(commodity, 28));
+    }
 }

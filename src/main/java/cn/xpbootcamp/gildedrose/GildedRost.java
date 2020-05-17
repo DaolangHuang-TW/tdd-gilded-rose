@@ -25,7 +25,11 @@ public class GildedRost {
             case pass:
                 int clearDays = commodity.sellIn - afterDays;
                 if (clearDays < 10) {
-                    price = commodity.quality + (10 - clearDays)*2;
+                    if (clearDays < 5) {
+                        price = commodity.quality + 10 + (5 - clearDays)*3;
+                    } else {
+                        price = commodity.quality + (10 - clearDays)*2;
+                    }
                 }
                 break;
             default:
